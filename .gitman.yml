@@ -1,0 +1,26 @@
+location: .gitman
+sources:
+  - repo: https://github.com/ctu-mrs/aloam
+    name: aloam
+    rev: master
+    type: git
+    params:
+    sparse_paths:
+      -
+    links:
+      - source: ''
+        target: ros_packages/aloam
+    scripts:
+      - git submodule update --init --recursive
+  - repo: https://github.com/ctu-mrs/mrs_aloam_estimator_plugin
+    name: mrs_aloam_estimator_plugin
+    rev: master
+    type: git
+    params:
+    sparse_paths:
+      -
+    links:
+      - source: ''
+        target: ros_packages/mrs_aloam_estimator_plugin
+    scripts:
+      - git submodule update --init --recursive
