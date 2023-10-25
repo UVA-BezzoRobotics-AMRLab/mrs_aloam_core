@@ -14,4 +14,7 @@
 
   <depend>cmake_modules</depend>
 
+  <depend>aloam_slam</depend>
+  <depend>mrs_aloam_estimator_plugin</depend>
+
 </package>
