@@ -9,7 +9,7 @@ sources:
       -
     links:
       - source: ''
-        target: ros_packages/aloam
+        target: aloam
     scripts:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_aloam_estimator_plugin
@@ -21,6 +21,6 @@ sources:
       -
     links:
       - source: ''
-        target: ros_packages/mrs_aloam_estimator_plugin
+        target: mrs_aloam_estimator_plugin
     scripts:
       - git submodule update --init --recursive
