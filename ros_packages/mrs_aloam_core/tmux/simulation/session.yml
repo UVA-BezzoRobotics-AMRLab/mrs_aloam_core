@@ -24,7 +24,7 @@ windows:
   - spawn:
       layout: tiled
       panes:
-        - waitForGazebo; rosservice call /mrs_drone_spawner/spawn "1 $UAV_TYPE --enable-ground-truth --enable-ouster --ouster-model OS0-32 --use-gpu-ray --pos 0 0 0 0"
+        - waitForGazebo; rosservice call /mrs_drone_spawner/spawn "1 $UAV_TYPE --enable-ground-truth --enable-ouster model:=OS0-32 horizontal_samples:=1024 use_gpu:=True --pos 0 0 0 0"
   - hw_api:
       layout: tiled
       panes:
