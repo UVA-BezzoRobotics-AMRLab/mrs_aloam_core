@@ -26,7 +26,7 @@
   <arg unless="$(eval arg('RUN_TYPE') == 'simulation')" name="pcl_filtration/custom_config/default" value="$(find mrs_aloam_core)/custom_configs/mrs_pcl_tools/uav.yaml" />
 
   <arg if="$(eval arg('RUN_TYPE') == 'simulation')" name="pcl_filtration/custom_config/lidar3d" value="$(find mrs_aloam_core)/custom_configs/mrs_pcl_tools/$(arg OUSTER_TYPE).yaml" />
-  <arg unless="$(eval arg('RUN_TYPE') == 'simulation')" name="pcl_filtration/custom_config/lidar3d" value="" />
+  <arg unless="$(eval arg('RUN_TYPE') == 'simulation')" name="pcl_filtration/custom_config/lidar3d" value="$(find mrs_aloam_core)/custom_configs/mrs_pcl_tools/$(arg OUSTER_TYPE).yaml" />
 
   <!-- no processing of depth in SLAM pipeline -->
   <arg name="pcl_filtration/custom_config/depth" value="" />
@@ -85,7 +85,7 @@
     <arg name="nodelet" value="$(arg nodelet)" />
     <arg name="nodelet_manager" value="$(arg nodelet_manager)" />
     <arg name="launch_prefix" value="$(arg launch_prefix)" />
-    
+
     <!-- Ouster -->
     <arg name="topic/lidar3d/points_raw" value="$(arg topic/lidar3d/points_raw)" />
     <arg name="topic/lidar3d/points_proc" value="$(arg topic/lidar3d/points_proc)" />
@@ -97,7 +97,7 @@
 
   </include>
   <!--//}-->
-  
+
   <!--//{ ALOAM SLAM NODELET -->
   <include file="$(find aloam_slam)/launch/aloam.launch">
     <arg name="UAV_NAME" value="$(arg UAV_NAME)"/>
@@ -117,9 +117,9 @@
   <!--//{ LAUNCH TOPICS THROTTLE -->
   <group if="$(arg throttle)" ns="$(arg UAV_NAME)">
 
-    <node name="lidar3d_processed_throttler" type="throttle" pkg="topic_tools" 
+    <node name="lidar3d_processed_throttler" type="throttle" pkg="topic_tools"
           args="messages /$(arg UAV_NAME)/os_cloud_nodelet/points_processed $(arg throttle/lidar3d/processed) /$(arg UAV_NAME)/os_cloud_nodelet/points_processed/throttled" />
-    <node name="slam_odom_throttler" type="throttle" pkg="topic_tools" 
+    <node name="slam_odom_throttler" type="throttle" pkg="topic_tools"
           args="messages /$(arg UAV_NAME)/slam/odom $(arg throttle/slam/odom) /$(arg UAV_NAME)/slam/odom/throttled" />
 
   </group>
